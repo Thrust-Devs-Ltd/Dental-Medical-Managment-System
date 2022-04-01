@@ -89,6 +89,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('export-invoices-report', 'InvoiceController@exportReport');
     Route::get('invoices-preview/{id}', 'InvoiceController@PreviewInvoice');
     Route::get('invoice-amount/{id}', 'InvoiceController@InvoiceAmount');
+    Route::get('invoice-procedures/{invoice_id}','InvoiceController@InvoiceProceduresToJson');
 
     //share invoice on email
     Route::get('share-invoice-details/{id}', 'InvoiceController@invoiceShareDetails');

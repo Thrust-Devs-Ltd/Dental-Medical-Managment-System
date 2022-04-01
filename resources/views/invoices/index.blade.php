@@ -119,6 +119,7 @@
 </div>
 @include('invoices.payment.create')
 @include('invoices.share_invoice')
+@include('invoices.invoice_procedures')
 @endsection
 @section('js')
 
@@ -198,6 +199,73 @@
         $('#customFilterBtn').click(function () {
             $('#invoices-table').DataTable().draw(true);
         });
+
+        function viewInvoiceProcedures(invoiceId){
+            $('.noResultsText').hide();
+            $.LoadingOverlay("show");
+            $.ajax({
+                type: 'get',
+                url: "invoice-procedures/" + invoiceId,
+                success: function (data) {
+                    if (data.length != 0) {
+                        convertJsontoHtmlTable(data);
+                    } else {
+                        $('.noResultsText').show();
+                    }
+                    $.LoadingOverlay("hide");
+                    $('#invoice-procedures-modal').modal('show')
+                },
+                error: function (request, status, error) {
+                    $.LoadingOverlay("hide");
+                }
+            });
+        }
+
+        function convertJsontoHtmlTable(jsonResponseData) {
+
+            //Getting value for table header
+            // {'id', 'clinical_notes', 'treatment' , 'created_at'}
+            var tablecolumns = [];
+            for (var i = 0; i < jsonResponseData.length; i++) {
+                for (var key in jsonResponseData[i]) {
+                    if (tablecolumns.indexOf(key) === -1) {
+                        tablecolumns.push(key);
+                    }
+                }
+            }
+
+            //Creating html table and adding class to it
+            let invoiceProceduresTable = document.createElement("table");
+            invoiceProceduresTable.classList.add("table");
+            invoiceProceduresTable.classList.add("table-striped");
+            invoiceProceduresTable.classList.add("table-bordered");
+            invoiceProceduresTable.classList.add("table-hover")
+
+            //Creating header of the HTML table using
+            //tr
+            let tr = invoiceProceduresTable.insertRow(-1);
+
+            for (let i = 0; i < tablecolumns.length; i++) {
+                //header
+                var th = document.createElement("th");
+                th.innerHTML = tablecolumns[i];
+                tr.appendChild(th);
+            }
+
+            // Add jsonResponseData in table as tr or rows
+            for (let i = 0; i < jsonResponseData.length; i++) {
+                tr = invoiceProceduresTable.insertRow(-1);
+                for (let j = 0; j < tablecolumns.length; j++) {
+                    let tabCell = tr.insertCell(-1);
+                    tabCell.innerHTML = jsonResponseData[i][tablecolumns[j]];
+                }
+            }
+
+            //Final step , append html table to the container div
+            let invoiceProceduresContainer = document.getElementById("invoiceProceduresContainer");
+            invoiceProceduresContainer.innerHTML = "";
+            invoiceProceduresContainer.appendChild(invoiceProceduresTable);
+        }
 
 
         function print_invoice() {

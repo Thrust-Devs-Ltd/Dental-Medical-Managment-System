@@ -120,8 +120,11 @@ class InvoiceController extends Controller
                             <i class="fa fa-angle-down"></i>
                         </button>
                         <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="' . url('invoices/' . $row->id) . '"> View </a>
+                        <li>
+                        <a href="#" onClick="viewInvoiceProcedures('.$row->id.')"> View procedures Done</a>
+                    </li>
+                    <li>
+                                <a href="' . url('invoices/' . $row->id) . '"> View Invoice Details</a>
                             </li>
                              <li>
                                 <a target="_blank" href="' . url('print-receipt/' . $row->id) . '"  > Print </a>
@@ -328,6 +331,15 @@ class InvoiceController extends Controller
 
         })->download('xls');
 
+    }
+    public function InvoiceProceduresToJson($InvoiceId){
+       $InvoiceProcedures = DB::table("invoice_items")
+       ->leftjoin("medical_services", "medical_services.id", "invoice_items.medical_service_id")
+       ->whereNull("invoice_items.deleted_at")
+       ->where("invoice_items.invoice_id", $InvoiceId)
+       ->select("medical_services.name", "invoice_items.qty","invoice_items.price",DB::raw("invoice_items.qty*invoice_items.price as total"))
+       ->get();
+        return Response()->json($InvoiceProcedures); 
     }
 
     private function invoiceProcedures($invoice_id)
