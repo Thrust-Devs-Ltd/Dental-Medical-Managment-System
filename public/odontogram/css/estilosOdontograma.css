@@ -1,0 +1,92 @@
+.class_disabled {
+    fill: black;
+    stroke: black;
+    stroke-width: 1px;
+    opacity: 0.3;
+}
+
+.markedBlue {
+    fill: none;
+    stroke: blue;
+    stroke-width: 7px;
+}
+
+.markedLightGreen {
+    fill: none;
+    stroke: #49e193;
+    stroke-width: 7px;
+}
+
+.markedVerde {
+    fill: green;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.markedPurple {
+    fill: #CC66CC;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.markedBrown {
+    fill: #CC6600;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.markedYellow {
+    fill: yellow;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.markedRed {
+    fill: red;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.markedOrange {
+    fill: orange;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.markedTomate {
+    fill: tomato;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.tooth {
+    fill-opacity: 0;
+    stroke: black;
+    stroke-width: 1px;
+}
+
+.absent {
+    fill: none;
+    opacity: 0;
+}
+
+.crown {
+    fill: none;
+    opacity: 0;
+}
+
+
+.impaction {
+    fill: none;
+    opacity: 0;
+}
+
+.endodontics {
+    fill: none;
+    opacity: 0;
+}
+
+.implant {
+    fill: none;
+    opacity: 0;
+}

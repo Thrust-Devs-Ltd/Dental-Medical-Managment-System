@@ -1,0 +1,7 @@
+{
+    "Doctor": true,
+    "Receptionist": true,
+    "SuperAdmin": true,
+    "Pharmacy": true,
+    "Nurse": true
+}

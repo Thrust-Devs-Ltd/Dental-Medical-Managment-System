@@ -1,0 +1,13 @@
+{
+    "name": "Nurse",
+    "alias": "nurse",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\Nurse\\Providers\\NurseServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}
