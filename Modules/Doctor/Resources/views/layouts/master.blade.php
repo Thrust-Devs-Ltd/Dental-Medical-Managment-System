@@ -138,14 +138,31 @@
                                         <span class="arrow"></span>
                                     </a>
                                 </li>
+                                <li aria-haspopup="true">
+                                    <a href="{{ url('patients') }}"> Patients
+                                        <span class="arrow"></span>
+                                    </a>
+                                </li>
 
                                 <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                     <a href="{{ url('appointments') }}"> Appointments
                                         <span class="arrow"></span>
                                     </a>
                                 </li>
-
                                 <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
+                                    <a href="javascript:;"> Invoicing
+                                        <span class="arrow"></span>
+                                    </a>
+                                    <ul class="dropdown-menu pull-left">
+                                        <li aria-haspopup="true" class=" ">
+                                            <a href="{{ url('invoices') }}" class="nav-link  ">Invoices </a>
+                                        </li>
+                                        <li aria-haspopup="true" class=" ">
+                                            <a href="{{ url('quotations') }}" class="nav-link  ">Quotations </a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                {{-- <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                     <a href="javascript:;"> Payroll Management
                                         <span class="arrow"></span>
                                     </a>
@@ -153,12 +170,12 @@
                                         <li aria-haspopup="true" class=" ">
                                             <a href="{{ url('individual-payslips') }}" class="nav-link"> My PaySlips
                                             </a>
-                                        </li>
+                                        </li> --}}
                                         {{--                                        <li aria-haspopup="true" class=" ">--}}
                                         {{--                                            <a href="{{ url('claims') }}" class="nav-link  ">My Claims </a>--}}
                                         {{--                                        </li>--}}
-                                    </ul>
-                                </li>
+                                    {{-- </ul>
+                                </li> --}}
 
                                 <li aria-haspopup="true" class="menu-dropdown classic-menu-dropdown ">
                                     <a href="{{ url('leave-requests') }}"> Leave Requests
